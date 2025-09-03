@@ -33,7 +33,6 @@ class KeyValueStoreController extends Controller
                         'key' => $key,
                         'value' => $value,
                         'stored_at' => $record->getAttribute('stored_at')->toDateTimeString(),
-                        'stored_at_utc' => $record->getAttribute('stored_at')->timestamp
                     ];
                 }
 
@@ -65,10 +64,35 @@ class KeyValueStoreController extends Controller
                 $value = KeyValueStore::getValueAtTimestamp($key, $timestamp);
             }
 
+            if (is_null($value)) {
+                return response()->json([
+                    'message' => 'Key not exists',
+                ], Response::HTTP_NOT_FOUND);
+            }
+
             return response()->json($value);
         } catch (\InvalidArgumentException $e) {
             return response()->json([
+                'error' => 'Invalid query argument',
+                'message' => $e->getMessage(),
+            ], Response::HTTP_BAD_REQUEST);
+        } catch (\Exception $e) {
+            return response()->json([
                 'error' => 'An error occured while fetching the data',
+                'message' => $e->getMessage(),
+            ], Response::HTTP_INTERNAL_SERVER_ERROR);
+        }
+    }
+
+    public function getAllRecords(Request $request): JsonResponse
+    {
+        try {
+            $records = KeyValueStore::getAllLatestValues();
+
+            return response()->json($records);
+        } catch (\Exception $e) {
+            return response()->json([
+                'error' => 'An error occired while fetching all data',
                 'message' => $e->getMessage(),
             ], Response::HTTP_INTERNAL_SERVER_ERROR);
         }

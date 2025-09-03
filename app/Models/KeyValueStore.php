@@ -3,7 +3,6 @@
 namespace App\Models;
 
 use Carbon\Carbon;
-use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
@@ -28,6 +27,10 @@ class KeyValueStore extends Model
 
     public static function getValueAtTimestamp(string $key, int $timestamp)
     {
+        if ($timestamp <= 0) {
+            throw new \InvalidArgumentException('Invalid timestamp');
+        }
+
         $datetime = Carbon::createFromTimestamp($timestamp);
 
         return static::query()
@@ -50,16 +53,18 @@ class KeyValueStore extends Model
             ]);
     }
 
-    public static function getAllLatestValues(): Collection
+    public static function getAllLatestValues(): array
     {
         return static::query()
             ->select('key', 'value', 'stored_at')
-            ->whereIn('id', function ($query) {
-                $query->selectRaw('MAX(id)')
-                    ->from('key_value_stores')
-                    ->groupBy('key');
-            })
             ->orderBy('key')
-            ->get();
+            ->get()
+            ->map(function ($record) {
+                return [
+                    'key' => $record->getAttribute('key'),
+                    'value' => $record->getAttribute('value'),
+                    'stored_at' => $record->getAttribute('stored_at')->toDateTimeString(),
+                ];
+            })->toArray();
     }
 }
