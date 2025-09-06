@@ -7,7 +7,6 @@ use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use Illuminate\Support\Facades\DB;
-use Illuminate\Validation\ValidationException;
 
 class KeyValueStoreController extends Controller
 {
@@ -18,7 +17,7 @@ class KeyValueStoreController extends Controller
 
             if (empty($data)) {
                 return response()->json([
-                    'message' => 'Request body cannot be empty'
+                    'message' => 'Request body cannot be empty',
                 ], Response::HTTP_BAD_REQUEST);
             }
 
@@ -41,13 +40,12 @@ class KeyValueStoreController extends Controller
 
             return response()->json([
                 'message' => 'Data stored successfully',
-                'data' => $results
+                'data' => $results,
             ], Response::HTTP_CREATED);
-
         } catch (\Exception $e) {
             return response()->json([
                 'error' => 'An error occured while storing the data',
-                'message' => $e->getMessage()
+                'message' => $e->getMessage(),
             ], Response::HTTP_INTERNAL_SERVER_ERROR);
         }
     }
