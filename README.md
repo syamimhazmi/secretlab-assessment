@@ -35,20 +35,20 @@ php artisan serve
 
 ### Store Key-Value Pairs
 
-- **POST** `/api/object`
+- **POST** `/api/v1/object`
 - **Body**: `{"key1": "value1", "key2": {"nested": "object"}}`
 
 ### Get Latest Value
 
-- **GET** `/api/object/{key}`
+- **GET** `/api/v1/object/{key}`
 
 ### Get Value at Timestamp
 
-- **GET** `/api/object/{key}?timestamp=1640000000`
+- **GET** `/api/v1/object/{key}?timestamp=1640000000`
 
 ### Get All Records
 
-- **GET** `/api/object/get_all_records`
+- **GET** `/api/v1/object/get_all_records`
 
 ## Testing
 
