@@ -56,3 +56,9 @@ php artisan serve
 # Run all tests
 php artisan test
 ```
+
+## Coverage
+
+```bash
+php artisan test --coverage
+```
