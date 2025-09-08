@@ -21,7 +21,6 @@ services:
     instance_count: 1
     name: api
     dockerfile_path: ./Dockerfile
-    build_command: composer install && php artisan optimize
     run_command: heroku-php-apache2 public/
     source_dir: public/
     envs:
