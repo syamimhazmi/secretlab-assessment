@@ -29,11 +29,11 @@ services:
       - key: APP_ENV
         value: production
         scope: RUN_TIME
-        type: general
+        type: GENERAL
       - key: APP_DEBUG
         value: false
         scope: RUN_TIME
-        type: general
+        type: GENERAL
 
 databases:
   - name: postgres-db

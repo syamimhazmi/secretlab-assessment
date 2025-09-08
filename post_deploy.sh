@@ -14,9 +14,6 @@ if [ -z "$APP_KEY" ]; then
     exit 1
 fi
 
-php artisan config:cache
-php artisan route:cache
-php artisan view:cache
-php artisan event:cache
+php artisan optimize
 
 php-fpm -D &&  nginx -g "daemon off;"
