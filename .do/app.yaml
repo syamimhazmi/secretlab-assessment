@@ -24,7 +24,6 @@ services:
     build_command: composer install && php artisan optimize
     run_command: heroku-php-apache2 public/
     source_dir: public/
-    internal_ports: [8080, 80]
     envs:
       - key: APP_ENV
         value: production
