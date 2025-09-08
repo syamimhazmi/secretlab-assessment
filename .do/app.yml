@@ -1,0 +1,44 @@
+alerts:
+  - rule: DEPLOYMENT_FAILED
+  - rule: DOMAIN_FAILED
+
+features:
+  - buildpack-stack=ubuntu-22
+
+name: secretlab-assessment
+
+services:
+  - environment_slug: php
+    git:
+      branch: master
+      repo_clone_url: https://github.com/syamimhazmi/secretlab-assessment.git
+    github:
+      repo: syamimhazmi/secretlab-assessment
+      branch: master
+      deploy_on_push: true
+    http_port: 8080
+    instance_size_slug: apps-s-1vcpu-0.5gb
+    instance_count: 1
+    name: api
+    dockerfile_path: ./Dockerfile
+    build_command: composer install && php artisan optimize
+    run_command: heroku-php-apache2 public/
+    source_dir: public/
+    internal_ports: [8080, 80]
+    envs:
+      - key: APP_ENV
+        value: production
+        scope: RUN_TIME
+        type: general
+      - key: APP_DEBUG
+        value: false
+        scope: RUN_TIME
+        type: general
+
+databases:
+  - name: postgres-db
+    engin: PG
+    version: "13"
+    production: false # use dev database
+    db_name: secretlab-assessment
+    db_user: doadmin
