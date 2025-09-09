@@ -8,7 +8,7 @@ features:
 name: secretlab-assessment
 
 services:
-  - environment_slug: php
+  - name: api
     git:
       branch: master
       repo_clone_url: https://github.com/syamimhazmi/secretlab-assessment.git
@@ -19,7 +19,6 @@ services:
     http_port: 8080
     instance_size_slug: apps-s-1vcpu-0.5gb
     instance_count: 1
-    name: api
     dockerfile_path: ./Dockerfile
     run_command: heroku-php-apache2 public/
     source_dir: public/
