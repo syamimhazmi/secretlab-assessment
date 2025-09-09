@@ -23,3 +23,7 @@ services:
     instance_size_slug: apps-s-1vcpu-0.5gb
     instance_count: 1
     dockerfile_path: ./Dockerfile
+    liveness_health_check:
+      initial_delay_seconds: 5
+      success_threshold: 2
+      http_path: /health
