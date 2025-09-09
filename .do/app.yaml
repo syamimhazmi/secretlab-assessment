@@ -18,7 +18,7 @@ services:
       repo: syamimhazmi/secretlab-assessment
       branch: master
       # disable this, only deploy once gh action finished its build
-      deploy_on_push: false
+      deploy_on_push: true
     http_port: 80
     instance_size_slug: apps-s-1vcpu-0.5gb
     instance_count: 1
