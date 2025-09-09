@@ -8,7 +8,7 @@ features:
 name: secretlab-assessment
 
 services:
-  - name: api
+  - name: web-services
     git:
       branch: master
       repo_clone_url: https://github.com/syamimhazmi/secretlab-assessment.git
