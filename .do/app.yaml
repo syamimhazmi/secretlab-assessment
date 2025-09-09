@@ -17,17 +17,9 @@ services:
     github:
       repo: syamimhazmi/secretlab-assessment
       branch: master
-      deploy_on_push: true
+      # disable this, only deploy once gh action finished its build
+      deploy_on_push: false
     http_port: 80
     instance_size_slug: apps-s-1vcpu-0.5gb
     instance_count: 1
     dockerfile_path: ./Dockerfile
-    envs:
-      - key: APP_ENV
-        value: production
-        scope: RUN_TIME
-        type: GENERAL
-      - key: APP_DEBUG
-        value: "false"
-        scope: RUN_TIME
-        type: GENERAL
