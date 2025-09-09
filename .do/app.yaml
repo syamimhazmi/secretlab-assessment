@@ -31,11 +31,10 @@ services:
         value: false
         scope: RUN_TIME
         type: GENERAL
-
-databases:
-  - name: postgres-db
-    engin: PG
-    version: "13"
-    production: false # use dev database
-    db_name: secretlab_assessment
-    db_user: doadmin
+# databases:
+#   - name: postgres-db
+#     engin: PG
+#     version: "13"
+#     production: false # use dev database
+#     db_name: secretlab_assessment
+#     db_user: doadmin
