@@ -7,15 +7,17 @@ features:
 
 name: secretlab-assessment
 
+region: sgp1
+
 services:
   - name: web-services
     git:
       branch: master
       repo_clone_url: https://github.com/syamimhazmi/secretlab-assessment.git
-    github:
-      repo: syamimhazmi/secretlab-assessment
-      branch: master
-      deploy_on_push: true
+    # github:
+    #   repo: syamimhazmi/secretlab-assessment
+    #   branch: master
+    #   deploy_on_push: true
     http_port: 8080
     instance_size_slug: apps-s-1vcpu-0.5gb
     instance_count: 1
