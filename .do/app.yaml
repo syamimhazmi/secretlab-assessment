@@ -18,25 +18,16 @@ services:
     #   repo: syamimhazmi/secretlab-assessment
     #   branch: master
     #   deploy_on_push: true
-    http_port: 8080
+    http_port: 80
     instance_size_slug: apps-s-1vcpu-0.5gb
     instance_count: 1
     dockerfile_path: ./Dockerfile
-    run_command: heroku-php-apache2 public/
-    source_dir: public/
     envs:
       - key: APP_ENV
         value: production
         scope: RUN_TIME
         type: GENERAL
       - key: APP_DEBUG
-        value: false
+        value: "false"
         scope: RUN_TIME
         type: GENERAL
-# databases:
-#   - name: postgres-db
-#     engin: PG
-#     version: "13"
-#     production: false # use dev database
-#     db_name: secretlab_assessment
-#     db_user: doadmin
