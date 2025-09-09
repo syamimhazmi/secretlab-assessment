@@ -37,5 +37,5 @@ databases:
     engin: PG
     version: "13"
     production: false # use dev database
-    db_name: secretlab-assessment
+    db_name: secretlab_assessment
     db_user: doadmin
