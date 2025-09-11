@@ -27,3 +27,39 @@ services:
       initial_delay_seconds: 5
       success_threshold: 2
       http_path: /health
+    envs:
+      - key: APP_NAME
+        value: "Secretlab Assessment"
+        scope: RUN_TIME
+        type: GENERAL
+      - key: APP_ENV
+        value: staging
+        scope: RUN_TIME
+        type: GENERAL
+      - key: APP_KEY
+        value: base64:hJzQK1Tk7AhCbqhqVuuhqKFzQ0JRktB3e+AteIvbQJI=
+        scope: RUN_TIME
+        type: SECRET
+      - key: APP_DEBUG
+        value: "false"
+        scope: RUN_TIME
+        type: GENERAL
+      - key: APP_URL
+        value: ${APP_URL}
+        scope: RUN_TIME
+        type: GENERAL
+      - key: LOG_CHANNEL
+        value: stack
+        scope: RUN_TIME
+        type: GENERAL
+      - key: LOG_STACK
+        value: single
+        type: GENERAL
+      - key: LOG_LEVEL
+        value: debug
+        scope: RUN_TIME
+        type: GENERAL
+      - key: DB_CONNECTION
+        value: pgsql
+        scope: RUN_TIME
+        type: GENERAL
