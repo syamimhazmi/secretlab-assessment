@@ -63,9 +63,11 @@ services:
         value: pgsql
         scope: RUN_TIME
         type: GENERAL
+
     databases:
       - name: db
         engine: PG
         version: "13"
         production: false
         db_name: secretlab-assessment
+        db_user: admin
