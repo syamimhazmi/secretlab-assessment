@@ -42,10 +42,12 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
     && docker-php-ext-configure gd --with-jpeg \
     && docker-php-ext-install -j$(nproc) \
         gd \
+        pdo \
         pdo_mysql \
         mysqli \
+        pdo_pgsql \
+        pgsql \
         mbstring \
-        pdo \
         bcmath \
         ctype \
         fileinfo \
