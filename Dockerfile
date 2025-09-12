@@ -22,6 +22,7 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
     libwebp-dev \
     zlib1g-dev \
     libzip-dev \
+    libpq-dev \
     gcc \
     g++ \
     make \
