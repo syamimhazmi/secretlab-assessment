@@ -64,10 +64,9 @@ services:
         scope: RUN_TIME
         type: GENERAL
 
-    databases:
-      - name: db
-        engine: PG
-        version: "13"
-        production: false
-        db_name: secretlab-assessment
-        db_user: admin
+databases:
+  - name: db
+    engine: PG
+    version: "14"
+    db_name: secretlab-assessment
+    db_user: admin
