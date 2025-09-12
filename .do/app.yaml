@@ -64,7 +64,7 @@ services:
         scope: RUN_TIME
         type: GENERAL
       - key: DB_URL
-        value: ${db.DATABASE_URl}
+        value: ${db.DATABASE_URL}
         scope: RUN_TIME
         type: GENERAL
 
